@@ -1,0 +1,3 @@
+import {buildDiscoveryPlan} from "./quota";import {COUNTRY_REGISTRY} from "./countries";import type {DiscoveryPlan} from "./types";
+export function previewGlobalPlan(target=10000,minimumPerCountry=10):DiscoveryPlan{return buildDiscoveryPlan(target,minimumPerCountry,COUNTRY_REGISTRY.filter(c=>c.outreachEligible).map(c=>c.iso2))}
+export function getCoverageSummary(){const review=COUNTRY_REGISTRY.filter(c=>!c.outreachEligible).length;return {countryAreas:COUNTRY_REGISTRY.length,eligibleForDefaultDiscovery:COUNTRY_REGISTRY.length-review,manualReviewAreas:review}}
